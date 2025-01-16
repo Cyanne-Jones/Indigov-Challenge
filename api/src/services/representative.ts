@@ -1,14 +1,16 @@
 import { Representative, representatives } from "../data/representative";
 
 // Add authentication on sign in, and return correct representative
-export const getRepresentative = (id?: number): Representative | undefined => {
+export const getRepresentative = (id?: string): Representative | string => {
   try {
     if (id) {
-      return representatives.find((rep) => rep.id === id);
-    }
+      const representative = representatives.find((rep) => rep.id === parseInt(id));
+      console.log('Representative found:', representative);
+      return representative
+    } 
+    throw new Error('No representative ID passed in');
   } catch(e) {
-    console.error('No representative ID passed in, returning default representative for app demo');
-    // Would return error to front end if this were real
-    return representatives[0];
+    console.error(e);
+    return 'No representative ID passed in';
   }
 };
