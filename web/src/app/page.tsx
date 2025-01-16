@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import { Representative, Constituent } from "../typeDefs/typeDef";
 import { ConstituentTable } from "./components/ConstituentTable";
+import { Button } from "@mui/material";
 
 
 export default function Home() {
@@ -37,12 +38,27 @@ export default function Home() {
       })
   }, []);
 
+  const handleCSVDownload = () => {
+    console.log('Download CSV');
+  }
+
   const welcomeMessage = representative ? `Welcome back, ${representative.role} ${representative.name}!` : '';
 
   return (
     <div className={styles.page}>
-      <h1>{welcomeMessage}</h1>
-      <p>View and manage your constituents</p>
+      <header className={styles.header}>
+        <h1>{welcomeMessage}</h1>
+        <p>View and manage your constituents here!</p>
+      </header>
+      <div className={styles.buttonContainer}>
+        <Button 
+          variant="outlined" 
+          color="primary"
+          onClick={handleCSVDownload}
+        >
+          Download CSV
+        </Button>
+      </div>
       <ConstituentTable constituents={constituents || []} />
     </div>
   );
