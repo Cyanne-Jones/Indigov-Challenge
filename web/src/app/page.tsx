@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import { Representative, Constituent } from "../typeDefs/typeDef";
+import { ConstituentTable } from "./components/ConstituentTable";
 
 
 export default function Home() {
@@ -42,6 +43,7 @@ export default function Home() {
     <div className={styles.page}>
       <h1>{welcomeMessage}</h1>
       <p>View and manage your constituents</p>
+      <ConstituentTable constituents={constituents || []} />
     </div>
   );
 }
