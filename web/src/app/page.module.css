@@ -5,4 +5,21 @@
   justify-items: center;
   min-height: 100svh;
   font-family: var(--font-geist-sans);
+  padding: 10px 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px;
+  padding: 0 20px;
 }

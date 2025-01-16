@@ -8,6 +8,7 @@ import '@fontsource/roboto/700.css';
 import { ThemeProvider } from "@mui/material";
 import { theme } from '../theme/theme';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { NavBar } from "./components/NavBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
       <AppRouterCacheProvider>
         <ThemeProvider theme={theme}>
+          <NavBar />
           {children}
         </ThemeProvider>
         </AppRouterCacheProvider>

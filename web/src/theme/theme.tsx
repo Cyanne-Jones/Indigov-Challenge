@@ -11,6 +11,15 @@ const themeOptions: ThemeOptions = {
       main: '#f5b27e',
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+        },
+      },
+    }
+  }
 };
 
 export const theme = createTheme(themeOptions);
