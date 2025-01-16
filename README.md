@@ -8,6 +8,7 @@ This application provides an interface for you, a government representative of b
 
 
 ### Instructions to run 
+- Run `npm i` in root, `/api` and `web`
 - Run `npm run dev` in the root (starts both FE + BE) 
 - Navigate to localhost:3000 in your browser
 - Add, view, download your constituents! 
