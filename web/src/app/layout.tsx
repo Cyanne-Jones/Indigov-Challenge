@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Representative Portal",
-  description: "A portal to view and contact your constituents",
+  description: "A portal to view and manage your constituents",
 };
 
 export default function RootLayout({
