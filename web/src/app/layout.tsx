@@ -5,6 +5,9 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { ThemeProvider } from "@mui/material";
+import { theme } from '../theme/theme';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <AppRouterCacheProvider>
+        <ThemeProvider theme={theme}>
+          {children}
+        </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
