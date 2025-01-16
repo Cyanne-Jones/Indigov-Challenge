@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
-import { Representative } from "../typeDefs/representative.typeDef";
+import { Representative } from "../typeDefs/typeDef";
 
 
 export default function Home() {

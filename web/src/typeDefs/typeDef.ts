@@ -30,3 +30,15 @@ export type Representative = {
   state: string;
   city: string;
 };
+
+export type Constituent = {
+  name: string;
+  email: string;
+  phone: string;
+  id: number;
+  date_joined: string;
+  party: Party;
+  state: string;
+  city: string;
+  representative_id: number;
+};
