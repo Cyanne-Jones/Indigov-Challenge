@@ -1,4 +1,5 @@
-import { Representative, representatives } from "../data/representative";
+import { representatives } from "../data/representative";
+import { Representative } from "../data/typeDefs";
 
 export const getRepresentative = (id?: string): Representative | string => {
   try {
