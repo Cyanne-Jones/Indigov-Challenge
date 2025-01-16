@@ -12,7 +12,7 @@ export default function Home() {
   const [ constituents, setConstituents ] = useState<Constituent[] | null>(null);
 
   // would pull this from auth login/app state info in a real app
-  const representativeId = 2;
+  const representativeId = 3;
 
   useEffect(() => {
     // fetch the representative from the backend
