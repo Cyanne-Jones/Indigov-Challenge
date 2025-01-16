@@ -1,6 +1,5 @@
 import { Representative, representatives } from "../data/representative";
 
-// Add authentication on sign in, and return correct representative
 export const getRepresentative = (id?: string): Representative | string => {
   try {
     if (id) {
