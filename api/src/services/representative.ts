@@ -5,7 +5,6 @@ export const getRepresentative = (id?: string): Representative | string => {
   try {
     if (id) {
       const representative = representatives.find((rep) => rep.id === parseInt(id));
-      console.log('Representative found:', representative);
       return representative
     } 
     throw new Error('No representative ID passed in');
