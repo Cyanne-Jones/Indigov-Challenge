@@ -35,7 +35,7 @@ export type Constituent = {
   name: string;
   email: string;
   phone: string;
-  id: number;
+  id?: number;
   date_joined: string;
   party: Party;
   state: string;
