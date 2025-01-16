@@ -23,7 +23,7 @@ export default function Home() {
       })
   }, []);
 
-  const welcomeMessage = representative ? `Welcome back, ${representative.role} ${representative.name}!` : 'Welcome back!';
+  const welcomeMessage = representative ? `Welcome back, ${representative.role} ${representative.name}!` : '';
 
   return (
     <div className={styles.page}>
