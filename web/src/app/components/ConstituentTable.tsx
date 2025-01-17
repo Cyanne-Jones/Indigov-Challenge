@@ -3,6 +3,10 @@ import { Table, TableBody, TableCell, TableHead, TableRow, TablePagination } fro
 import { Constituent } from '../../typeDefs/typeDef';
 import styled from '@emotion/styled';
 
+// Table pagination select component throws warning about using the native select element
+// This is a known issue with MUI
+// https://stackoverflow.com/questions/76491601/accessibility-issues-coming-in-mui-components
+
 const StyledTable = styled(Table)`
   width: 1000px;
 `
@@ -18,7 +22,7 @@ export const ConstituentTable = ({ constituents }: { constituents: Constituent[]
         <TableCell>{constituent.name}</TableCell>
         <TableCell>{constituent.email}</TableCell>
         <TableCell>{constituent.phone}</TableCell>
-        <TableCell>{new Date(constituent.date_joined).toLocaleDateString()}</TableCell>
+        <TableCell>{constituent.date_joined ? new Date(constituent.date_joined).toLocaleDateString() : ''}</TableCell>
         <TableCell>{constituent.party}</TableCell>
         <TableCell>{constituent.city}</TableCell>
         <TableCell>{constituent.state}</TableCell>
@@ -60,6 +64,8 @@ export const ConstituentTable = ({ constituents }: { constituents: Constituent[]
         onPageChange={handlePageChange}
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleRowsPerPageChange}
+        showFirstButton
+        showLastButton
       />
     </div>
   )

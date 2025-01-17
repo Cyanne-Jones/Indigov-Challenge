@@ -1,4 +1,8 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+
+// preloading styles results in a well documented console warning
+// shouldn't exist in production, and does not cause any issues
+// https://github.com/vercel/next.js/issues/51524
  
 export default function Document() {
   return (

@@ -1,11 +1,12 @@
-import { Button } from "@mui/material";
+import { AddConstituentForm } from "./components/AddConstituentForm";
+import styles from './page.module.css';
 
 const AddConstituentPage = () => {
 
   return (
-    <div>
+    <div className={styles.page}>
       <h1>Add a constituent here!</h1>
-      <Button variant="contained" color="primary">Add Constituent</Button>
+      <AddConstituentForm />
     </div>
   )
 }

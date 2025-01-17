@@ -28,7 +28,7 @@ export default function Home() {
 
   useEffect(() => {
     // fetch the constituents from the backend
-    fetch(`http://localhost:4000/constituents?id=${representativeId}`)
+    fetch(`http://localhost:4000/constituents?representativeId=${representativeId}`)
       .then(res => res.json())
       .then((data) => {
         setConstituents(data);
