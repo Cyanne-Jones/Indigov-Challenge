@@ -3,7 +3,6 @@ import { CSVSortBy } from "../data/typeDefs";
 import { createObjectCsvStringifier } from "csv-writer";
 
 export const downloadCSV = (representativeId: string, sortBy: string = CSVSortBy.DATE_JOINED) => {
-  console.log('Downloading CSV for representative ID:', representativeId);
   try {
 
     const csvStringifier = createObjectCsvStringifier({
