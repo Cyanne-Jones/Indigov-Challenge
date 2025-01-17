@@ -1,26 +1,40 @@
-import { useState } from 'react';
-import { Table, TableBody, TableCell, TableHead, TableRow, TablePagination } from '@mui/material';
-import { Constituent } from '../../typeDefs/typeDef';
+import { useEffect, useState } from 'react';
+import { Table, TableBody, TableCell, TableRow, TablePagination } from '@mui/material';
+import { Constituent, TableSortBy } from '../../../typeDefs/typeDef';
 import styled from '@emotion/styled';
+import { getSortedConstituentsForTable } from '../../utils';
+import { TableHeader } from './TableHeader';
 
 // Table pagination select component throws warning about using the native select element
 // This is a known issue with MUI
 // https://stackoverflow.com/questions/76491601/accessibility-issues-coming-in-mui-components
 
 const StyledTable = styled(Table)`
-  width: 1000px;
+  max-width: 1000px;
+`
+
+const StyledTableCell = styled(TableCell)`
+  max-width: 180px;
+  overflow: scroll;
 `
 
 export const ConstituentTable = ({ constituents }: { constituents: Constituent[] }) => {
 
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
+  const [sortBy, setSortBy] = useState<TableSortBy>(TableSortBy.DESC_DATE_JOINED);
+  const [sortedConstituents, setSortedConstituents] = useState<Constituent[]>(constituents);
 
-  const rows = constituents.map((constituent) => {
+  useEffect(() => {
+    setSortedConstituents(getSortedConstituentsForTable(sortBy, constituents));
+  }, [sortBy, constituents]);
+
+
+  const rows = sortedConstituents.map((constituent) => {
     return (
       <TableRow key={constituent.id}>
         <TableCell>{constituent.name}</TableCell>
-        <TableCell>{constituent.email}</TableCell>
+        <StyledTableCell>{constituent.email}</StyledTableCell>
         <TableCell>{constituent.phone}</TableCell>
         <TableCell>{constituent.date_joined ? new Date(constituent.date_joined).toLocaleDateString() : ''}</TableCell>
         <TableCell>{constituent.party}</TableCell>
@@ -42,17 +56,10 @@ export const ConstituentTable = ({ constituents }: { constituents: Constituent[]
   return (
     <div>
       <StyledTable>
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Phone</TableCell>
-            <TableCell>Date Joined</TableCell>
-            <TableCell>Party</TableCell>
-            <TableCell>City</TableCell>
-            <TableCell>State</TableCell>
-          </TableRow>
-        </TableHead>
+        <TableHeader
+          setSortBy={setSortBy}
+          sortBy={sortBy}
+        />
         <TableBody>
           {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}
         </TableBody>

@@ -42,3 +42,30 @@ export type Constituent = {
   city: string;
   representative_id: number;
 };
+
+export enum CSVSortBy {
+  NAME = 'name',
+  EMAIL = 'email',
+  PHONE = 'phone',
+  DATE_JOINED = 'date_joined',
+  PARTY = 'party',
+  CITY = 'city',
+  STATE = 'state',
+};
+
+export enum TableSortBy {
+  ASC_NAME = 'ASC_NAME',
+  DESC_NAME = 'DESC_NAME',
+  ASC_EMAIL = 'ASC_EMAIL',
+  DESC_EMAIL = 'DESC_EMAIL',
+  ASC_PHONE = 'ASC_PHONE',
+  DESC_PHONE = 'DESC_PHONE',
+  ASC_PARTY = 'ASC_PARTY',
+  DESC_PARTY = 'DESC_PARTY',
+  ASC_CITY = 'ASC_CITY',
+  DESC_CITY = 'DESC_CITY',
+  ASC_STATE = 'ASC_STATE',
+  DESC_STATE = 'DESC_STATE',
+  ASC_DATE_JOINED = 'ASC_DATE_JOINED',
+  DESC_DATE_JOINED = 'DESC_DATE_JOINED',
+};
