@@ -21,7 +21,7 @@ Typescript used across full stack
 ## Instructions to run 
 - clone this repository
 - Run `npm i` in root, `/api` and `web`
-- Run `npm run dev` in the root (starts both FE + BE) 
+- Run `npm run dev` in the root (starts both FE + BE using Concurrently) 
 - Navigate to `localhost:3000/` in your browser
 
 ## View your constituents
@@ -48,9 +48,10 @@ Use the link in the nav bar, or navigate directly to `localhost:3000/add`
 
 ## Thoughts for more additions if I had all the time in the world
 - A real relational database back end
-- Authentication between the front and backends, this challenges uses mock data, but this is plenty of PII to secure with care in real life!
+- Something like GraphQL/Apollo to ensure type-safety across front and back end
+- Authentication between the front and backends, this challenges uses mock data, but this is plenty of PII to secure with care in real life
 - Sign in between different representatives
-- Testing for all back end service layer functions
+- Test suites for back end service layer functions
 - End-to-end testing of user flows using Playwright or Cypress
 - Deployment
 
