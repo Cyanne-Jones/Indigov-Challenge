@@ -1,6 +1,6 @@
 'use client'
 
-import { TextField, Button, MenuItem } from "@mui/material";
+import { TextField, Button, MenuItem, Snackbar } from "@mui/material";
 import { useState } from "react";
 import { Constituent, Party } from "@/typeDefs/typeDef";
 import styles from './AddConstituentForm.module.css';
@@ -12,6 +12,8 @@ export const AddConstituentForm = () => {
   const [party, setParty] = useState<Party>('' as Party);
   const [city, setCity] = useState<string>('');
   const [state, setState] = useState<string>('');
+  const [showSnackbar, setShowSnackbar] = useState<boolean>(false);
+  const [snackbarMessage, setSnackbarMessage] = useState<string>('');
 
   // would pull this from auth login/app state info in a real app
   const representativeId = 3;
@@ -37,7 +39,16 @@ export const AddConstituentForm = () => {
         setState(e.target.value);
         break;
     }
-  }
+  };
+
+  const clearInputs = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setParty('' as Party);
+    setCity('');
+    setState('');
+  };
 
   const handleSubmit = () => {
 
@@ -62,11 +73,14 @@ export const AddConstituentForm = () => {
     fetch('http://localhost:4000/addConstituent', requestBody)
       .then(res => res.json())
       .then((data) => {
-        console.log('Constituent added', data);
-        window.location.href = "/";
+        setShowSnackbar(true);
+        setSnackbarMessage(data.error === 'Constituent already exists' ? 'Constituent already exists' : `Constituent ${data.name} added successfully`);
+        clearInputs();
       })
       .catch((e) => {
         console.error(e);
+        setShowSnackbar(true);
+        setSnackbarMessage('Error adding constituent');
       })
   }
 
@@ -130,6 +144,13 @@ export const AddConstituentForm = () => {
         value={state}
       />
       <Button variant='contained' onClick={handleSubmit} disabled={ !name || !email || !phone || !party || !city || !state}>Add Constituent</Button>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        open={showSnackbar}
+        onClose={() => setShowSnackbar(false)}
+        message={snackbarMessage}
+        autoHideDuration={3000}
+      />
     </div>
   )
 }

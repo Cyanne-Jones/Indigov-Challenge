@@ -1,3 +1,4 @@
+import e from "cors";
 import { constituents } from "../data/constituent";
 import { Constituent } from "../data/typeDefs";
 
@@ -30,7 +31,10 @@ export const createConstituent = (constituent: Constituent) => {
 
     if(existingConstituent) {
       console.log('Constituent already exists');
-      return existingConstituent;
+      return {
+        ...existingConstituent,
+        error: 'Constituent already exists',
+      };
     }
 
     // if the constituent doesn't exist, add it
