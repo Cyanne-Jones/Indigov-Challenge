@@ -8,6 +8,7 @@ This application provides an interface for you, a government representative, to 
 
 
 ## Instructions to run 
+- clone this repository
 - Run `npm i` in root, `/api` and `web`
 - Run `npm run dev` in the root (starts both FE + BE) 
 - Navigate to `localhost:3000/` in your browser
