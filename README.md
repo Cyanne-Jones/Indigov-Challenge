@@ -55,7 +55,8 @@ Use the link in the nav bar, or navigate directly to `localhost:3000/add`
 - End-to-end testing of user flows using Playwright or Cypress
 - Deployment
 - Stricter type validation for adding a constituent
-- Date picker component so the representative can choose when their constituent joined 
+- Date picker component so the representative can choose when their constituent joined
+- Table pagination through back end requests instead of requesting all constituents
 
 ## Thank you for your time!
 Please let me know if there's any questions, but I really appreciate your consideration for the engineering position at Indigov!
