@@ -74,7 +74,7 @@ export const AddConstituentForm = () => {
       .then(res => res.json())
       .then((data) => {
         setShowSnackbar(true);
-        setSnackbarMessage(data.error === 'Constituent already exists' ? 'Constituent already exists' : `Constituent ${data.name} added successfully`);
+        setSnackbarMessage(data.error === 'Constituent already exists' ? 'Constituent already exists, any new information was updated' : `Constituent ${data.name} added successfully`);
         clearInputs();
       })
       .catch((e) => {
