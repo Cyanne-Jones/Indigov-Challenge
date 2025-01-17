@@ -26,7 +26,7 @@ export const DownloadCsvMenu = ({ handleDownloadSelection } : { handleDownloadSe
         aria-controls="simple-menu" 
         aria-haspopup="true" 
         onClick={handleClick}
-        variant="contained"
+        variant={anchorEl ? 'outlined' : 'contained'}
         endIcon={anchorEl ? <ArrowUpwardOutlined /> : <ArrowDownwardOutlined />}
       >
         Download CSV
