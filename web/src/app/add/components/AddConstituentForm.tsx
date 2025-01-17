@@ -86,7 +86,9 @@ export const AddConstituentForm = () => {
 
   return (
     <div className={styles.form}>
+    <div className={styles.inputs}>
       <TextField 
+        className={styles.input}
         placeholder="John Doe" 
         label="Name"
         name="name"
@@ -143,6 +145,7 @@ export const AddConstituentForm = () => {
         onChange={handleInputChange}
         value={state}
       />
+      </div>
       <Button variant='contained' onClick={handleSubmit} disabled={ !name || !email || !phone || !party || !city || !state}>Add Constituent</Button>
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
