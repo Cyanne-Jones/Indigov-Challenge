@@ -42,3 +42,13 @@ export type Constituent = {
   city: string;
   representative_id: number;
 };
+
+export enum CSVSortBy {
+  NAME = 'name',
+  EMAIL = 'email',
+  PHONE = 'phone',
+  DATE_JOINED = 'date_joined',
+  PARTY = 'party',
+  CITY = 'city',
+  STATE = 'state',
+};
