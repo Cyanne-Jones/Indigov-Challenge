@@ -13,6 +13,11 @@ const StyledTable = styled(Table)`
   max-width: 1000px;
 `
 
+const StyledTableCell = styled(TableCell)`
+  max-width: 180px;
+  overflow: scroll;
+`
+
 export const ConstituentTable = ({ constituents }: { constituents: Constituent[] }) => {
 
   const [page, setPage] = useState<number>(0);
@@ -29,7 +34,7 @@ export const ConstituentTable = ({ constituents }: { constituents: Constituent[]
     return (
       <TableRow key={constituent.id}>
         <TableCell>{constituent.name}</TableCell>
-        <TableCell>{constituent.email}</TableCell>
+        <StyledTableCell>{constituent.email}</StyledTableCell>
         <TableCell>{constituent.phone}</TableCell>
         <TableCell>{constituent.date_joined ? new Date(constituent.date_joined).toLocaleDateString() : ''}</TableCell>
         <TableCell>{constituent.party}</TableCell>
