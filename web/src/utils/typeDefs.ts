@@ -26,7 +26,6 @@ export type Representative = {
   dateJoined: string;
   role: RepresentativeRole;
   party: Party;
-  // Add type safety for state and city if given more time
   state: string;
   city: string;
 };

@@ -18,7 +18,6 @@ export default function Home() {
   const representativeId = 3;
 
   useEffect(() => {
-    // fetch the representative from the backend
     fetch(`http://localhost:4000/representative?id=${representativeId}`)
       .then(res => res.json())
       .then((data) => {
@@ -32,7 +31,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // fetch the constituents from the backend
     fetch(`http://localhost:4000/constituents?representativeId=${representativeId}`)
       .then(res => res.json())
       .then((data) => {
