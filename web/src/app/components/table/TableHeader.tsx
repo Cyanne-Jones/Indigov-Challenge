@@ -28,13 +28,13 @@ const StyledTableCellContents = styled.div`
 export const TableHeader = ({sortBy, setSortBy}: {sortBy: TableSortBy, setSortBy: (sortBy: TableSortBy) => void}) => {
 
     // header arrow state
-    const [nameArrowAsc, setNameArrowAsc] = useState<boolean>(false);
-    const [emailArrowAsc, setEmailArrowAsc] = useState<boolean>(false);
-    const [phoneArrowAsc, setPhoneArrowAsc] = useState<boolean>(false);
+    const [nameArrowAsc, setNameArrowAsc] = useState<boolean>(true);
+    const [emailArrowAsc, setEmailArrowAsc] = useState<boolean>(true);
+    const [phoneArrowAsc, setPhoneArrowAsc] = useState<boolean>(true);
     const [dateJoinedArrowAsc, setDateJoinedArrowAsc] = useState<boolean>(false);
-    const [partyArrowAsc, setPartyArrowAsc] = useState<boolean>(false);
-    const [cityArrowAsc, setCityArrowAsc] = useState<boolean>(false);
-    const [stateArrowAsc, setStateArrowAsc] = useState<boolean>(false);
+    const [partyArrowAsc, setPartyArrowAsc] = useState<boolean>(true);
+    const [cityArrowAsc, setCityArrowAsc] = useState<boolean>(true);
+    const [stateArrowAsc, setStateArrowAsc] = useState<boolean>(true);
 
     
   return (<TableHead>
@@ -46,7 +46,7 @@ export const TableHeader = ({sortBy, setSortBy}: {sortBy: TableSortBy, setSortBy
             isActive={sortBy === TableSortBy.ASC_NAME || sortBy === TableSortBy.DESC_NAME}
             isAscending={nameArrowAsc}
             clickHandler={() => {
-              setSortBy(!nameArrowAsc ? TableSortBy.ASC_NAME : TableSortBy.DESC_NAME);
+              setSortBy(nameArrowAsc ? TableSortBy.ASC_NAME : TableSortBy.DESC_NAME);
               setNameArrowAsc(!nameArrowAsc);
             }}
           />
@@ -59,7 +59,7 @@ export const TableHeader = ({sortBy, setSortBy}: {sortBy: TableSortBy, setSortBy
             isActive={sortBy === TableSortBy.ASC_EMAIL || sortBy === TableSortBy.DESC_EMAIL}
             isAscending={emailArrowAsc}
             clickHandler={() => {
-              setSortBy(!emailArrowAsc ? TableSortBy.ASC_EMAIL : TableSortBy.DESC_EMAIL);
+              setSortBy(emailArrowAsc ? TableSortBy.ASC_EMAIL : TableSortBy.DESC_EMAIL);
               setEmailArrowAsc(!emailArrowAsc);
             }}
           />
@@ -72,7 +72,7 @@ export const TableHeader = ({sortBy, setSortBy}: {sortBy: TableSortBy, setSortBy
             isActive={sortBy === TableSortBy.ASC_PHONE || sortBy === TableSortBy.DESC_PHONE}
             isAscending={phoneArrowAsc}
             clickHandler={() => {
-              setSortBy(!phoneArrowAsc ? TableSortBy.ASC_PHONE : TableSortBy.DESC_PHONE);
+              setSortBy(phoneArrowAsc ? TableSortBy.ASC_PHONE : TableSortBy.DESC_PHONE);
               setPhoneArrowAsc(!phoneArrowAsc);
             }}
           />
@@ -98,7 +98,7 @@ export const TableHeader = ({sortBy, setSortBy}: {sortBy: TableSortBy, setSortBy
             isActive={sortBy === TableSortBy.ASC_PARTY || sortBy === TableSortBy.DESC_PARTY}
             isAscending={partyArrowAsc}
             clickHandler={() => {
-              setSortBy(!partyArrowAsc ? TableSortBy.ASC_PARTY : TableSortBy.DESC_PARTY);
+              setSortBy(partyArrowAsc ? TableSortBy.ASC_PARTY : TableSortBy.DESC_PARTY);
               setPartyArrowAsc(!partyArrowAsc);
             }}
           />
@@ -111,7 +111,7 @@ export const TableHeader = ({sortBy, setSortBy}: {sortBy: TableSortBy, setSortBy
             isActive={sortBy === TableSortBy.ASC_CITY || sortBy === TableSortBy.DESC_CITY}
             isAscending={cityArrowAsc}
             clickHandler={() => {
-              setSortBy(!cityArrowAsc ? TableSortBy.ASC_CITY : TableSortBy.DESC_CITY);
+              setSortBy(cityArrowAsc ? TableSortBy.ASC_CITY : TableSortBy.DESC_CITY);
               setCityArrowAsc(!cityArrowAsc);
             }}
           />
@@ -124,7 +124,7 @@ export const TableHeader = ({sortBy, setSortBy}: {sortBy: TableSortBy, setSortBy
             isActive={sortBy === TableSortBy.ASC_STATE || sortBy === TableSortBy.DESC_STATE}
             isAscending={stateArrowAsc}
             clickHandler={() => {
-              setSortBy(!stateArrowAsc ? TableSortBy.ASC_STATE : TableSortBy.DESC_STATE);
+              setSortBy(stateArrowAsc ? TableSortBy.ASC_STATE : TableSortBy.DESC_STATE);
               setStateArrowAsc(!stateArrowAsc);
             }}
           />
