@@ -18,37 +18,28 @@ export const getAllConstituents = (representativeId: string) => {
 
 export const createConstituent = (constituent: Constituent) => {
   try {
-    // check if the constituent already exists
-    const existingConstituent = constituents.find((c: Constituent) => {
-      return c.name === constituent.name 
-        && c.email === constituent.email 
-        && c.phone === constituent.phone
-        && c.state === constituent.state
-        && c.city === constituent.city
-        && c.party === constituent.party
-        && c.representative_id === constituent.representative_id;
-    });
+    // check if the constituent already exists using email to check
+    const existingConstituent = constituents.find((c: Constituent) => c.email === constituent.email);
 
     if(existingConstituent) {
       console.log('Constituent already exists');
-      return {
+      // update the existing constituent
+      const index = constituents.findIndex((c: Constituent) => c.email === constituent.email);
+      const updatedConstituent = {
         ...existingConstituent,
-        error: 'Constituent already exists',
+        ...constituent,
+        error: 'Constituent already exists'
       };
+      constituents[index] = updatedConstituent;
+      console.log('Constituent updated', updatedConstituent);
+      return updatedConstituent;
     }
 
     // if the constituent doesn't exist, add it
-    const date = new Date();
-    const formattedDate = new Intl.DateTimeFormat('en-CA', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit'
-    }).format(date);
-
     const newConstituent = {
       ...constituent,
       id: constituents.length + 1,
-      date_joined: formattedDate,
+      date_joined: new Date().toISOString(),
     };
 
     constituents.push(newConstituent);
