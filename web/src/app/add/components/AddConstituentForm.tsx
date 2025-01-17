@@ -121,7 +121,6 @@ export const AddConstituentForm = () => {
         onChange={handleInputChange}
         select
         value={party}
-        style={{width: '100%'}}
       >
         {Object.values(Party).map((party) => (
           <MenuItem key={party} value={party}>
