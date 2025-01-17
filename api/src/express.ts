@@ -38,7 +38,7 @@ app.get('/downloadCSV', (req, res) =>  {
 
   const csv = downloadCSV(representativeId, sortBy)
   res.header('Content-Type', 'text/csv');
-  res.send(csv);
+  return res.send(csv);
 })
 
 app.listen(port, () => {
