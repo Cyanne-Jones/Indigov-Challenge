@@ -14,7 +14,7 @@ export default function Home() {
   const [ showSnackbar, setShowSnackbar ] = useState<boolean>(false);
   const [ snackbarMessage, setSnackbarMessage ] = useState<string>('');
 
-  // would pull this from auth login/app state info in a real app
+  // use 1, 2, 3 to toggle between different representatives!
   const representativeId = 3;
 
   useEffect(() => {
@@ -26,6 +26,8 @@ export default function Home() {
       })
       .catch((e) => {
         console.error(e);
+        setShowSnackbar(true);
+        setSnackbarMessage('Error fetching representative information');
       })
   }, []);
 
@@ -38,6 +40,8 @@ export default function Home() {
       })
       .catch((e) => {
         console.error(e);
+        setShowSnackbar(true);
+        setSnackbarMessage('Error fetching constituent information');
       })
   }, []);
 
