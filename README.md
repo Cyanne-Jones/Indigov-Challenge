@@ -6,6 +6,17 @@ This application provides an interface for you, a government representative, to 
 - Add a new constituent without worrying about accidentally duplicating them 
 - Download a CSV of your constituents in different orders
 
+## Tech Stack
+Typescript used across full stack
+### Front end:
+- Next.js built on React
+- MaterialUI
+
+### Back end:
+- Node.js
+- Express.js
+- csv-writer
+
 
 ## Instructions to run 
 - clone this repository
@@ -34,6 +45,14 @@ Use the link in the nav bar, or navigate directly to `localhost:3000/add`
 - If you add a constituent that already exists based on email address, the new information you entered will be merged to that constituent without duplicating.
 - User feedback in the form of a snackbar for communicative UX
 - Navigate back to view your constituents and you can see your new addition is there!
+
+## Thoughts for more additions if I had all the time in the world
+- A real relational database back end
+- Authentication between the front and backends, this challenges uses mock data, but this is plenty of PII to secure with care in real life!
+- Sign in between different representatives
+- Testing for all back end service layer functions
+- End-to-end testing of user flows using Playwright or Cypress
+- Deployment
 
 ## Thank you for your time!
 Please let me know if there's any questions, but I really appreciate your consideration for the engineering position at Indigov!
