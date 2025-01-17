@@ -1,4 +1,4 @@
-import { Constituent, TableSortBy } from "@/utils/typeDef";
+import { Constituent, TableSortBy } from "@/utils/typeDefs";
 
 export const getSortedConstituentsForTable = (sortBy: TableSortBy, constituents: Constituent[]) => {
 

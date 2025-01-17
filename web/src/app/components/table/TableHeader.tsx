@@ -1,5 +1,5 @@
 import { TableHead, TableRow, TableCell } from '@mui/material';
-import { TableSortBy } from '../../../utils/typeDef';
+import { TableSortBy } from '../../../utils/typeDefs';
 import { ArrowUpwardOutlined, ArrowDownwardOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 import styled from '@emotion/styled';
