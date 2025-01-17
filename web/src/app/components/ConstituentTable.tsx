@@ -60,6 +60,8 @@ export const ConstituentTable = ({ constituents }: { constituents: Constituent[]
         onPageChange={handlePageChange}
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleRowsPerPageChange}
+        showFirstButton
+        showLastButton
       />
     </div>
   )
