@@ -2,8 +2,8 @@ import { constituents } from "../data/constituent";
 import { CSVSortBy } from "../data/typeDefs";
 import { createObjectCsvStringifier } from "csv-writer";
 
-export const downloadCSV = async (representativeId: number, sortBy: string = CSVSortBy.DATE_JOINED) => {
-
+export const downloadCSV = (representativeId: string, sortBy: string = CSVSortBy.DATE_JOINED) => {
+  console.log('Downloading CSV for representative ID:', representativeId);
   try {
 
     const csvStringifier = createObjectCsvStringifier({
@@ -18,9 +18,9 @@ export const downloadCSV = async (representativeId: number, sortBy: string = CSV
       ]
     });
 
-    const representativeConstituents = constituents.filter((constituent) => constituent.representative_id === representativeId);
+    const representativeConstituents = constituents.filter((constituent) => constituent.representative_id === parseInt(representativeId));
 
-    const sortedConstituents = representativeConstituents.sort ((a, b) => {
+    const sortedConstituents = representativeConstituents.sort((a, b) => {
       if (sortBy === CSVSortBy.NAME) {
         return a.name.localeCompare(b.name);
       } else if (sortBy === CSVSortBy.EMAIL) {
@@ -39,10 +39,9 @@ export const downloadCSV = async (representativeId: number, sortBy: string = CSV
         a.date_joined.localeCompare(b.date_joined);
       }
     });
-
-  const csvString = csvStringifier.stringifyRecords(sortedConstituents);
-
-  return csvString;
+    
+    const csvStringWithHeader = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(sortedConstituents);
+    return csvStringWithHeader;
 
   } catch (error) {
     console.error(error);
