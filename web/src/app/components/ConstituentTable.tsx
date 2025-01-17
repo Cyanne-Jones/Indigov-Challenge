@@ -18,7 +18,7 @@ export const ConstituentTable = ({ constituents }: { constituents: Constituent[]
         <TableCell>{constituent.name}</TableCell>
         <TableCell>{constituent.email}</TableCell>
         <TableCell>{constituent.phone}</TableCell>
-        <TableCell>{new Date(constituent.date_joined).toLocaleDateString()}</TableCell>
+        <TableCell>{constituent.date_joined ? new Date(constituent.date_joined).toLocaleDateString() : ''}</TableCell>
         <TableCell>{constituent.party}</TableCell>
         <TableCell>{constituent.city}</TableCell>
         <TableCell>{constituent.state}</TableCell>
