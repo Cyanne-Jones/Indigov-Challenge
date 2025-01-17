@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
-import { Representative, Constituent, CSVSortBy } from "../typeDefs/typeDef";
+import { Representative, Constituent, CSVSortBy } from "../utils/typeDef";
 import { ConstituentTable } from "./components/table/ConstituentTable";
 import { Snackbar } from "@mui/material";
 import { DownloadCsvMenu } from "./components/DownloadCsvMenu";
