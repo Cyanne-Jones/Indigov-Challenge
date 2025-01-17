@@ -24,7 +24,7 @@ app.get('/constituents', (req, res) => {
 });
 
 app.post('/addConstituent', (req, res) => {
-  const constituent = req?.body?.constituent;
+  const constituent = req?.body;
   const constituents = createConstituent(constituent);
   return res.send(constituents);
 });

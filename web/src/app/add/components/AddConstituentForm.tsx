@@ -2,14 +2,14 @@
 
 import { TextField, Button, MenuItem } from "@mui/material";
 import { useState } from "react";
-import { Party } from "@/typeDefs/typeDef";
+import { Constituent, Party } from "@/typeDefs/typeDef";
 import styles from './AddConstituentForm.module.css';
 
 export const AddConstituentForm = () => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
-  const [party, setParty] = useState<Party | ''>('');
+  const [party, setParty] = useState<Party>('' as Party);
   const [city, setCity] = useState<string>('');
   const [state, setState] = useState<string>('');
 
@@ -40,7 +40,8 @@ export const AddConstituentForm = () => {
   }
 
   const handleSubmit = () => {
-    const constituent = {
+
+    const constituent : Constituent = {
       name,
       email,
       phone,
@@ -58,7 +59,7 @@ export const AddConstituentForm = () => {
       body: JSON.stringify(constituent)
     }
 
-    fetch('http://localhost:4000/constituent', requestBody)
+    fetch('http://localhost:4000/addConstituent', requestBody)
       .then(res => res.json())
       .then((data) => {
         console.log('Constituent added', data);
