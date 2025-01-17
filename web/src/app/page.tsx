@@ -2,14 +2,17 @@
 
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
-import { Representative, Constituent } from "../typeDefs/typeDef";
+import { Representative, Constituent, CSVSortBy } from "../typeDefs/typeDef";
 import { ConstituentTable } from "./components/ConstituentTable";
-import { Button } from "@mui/material";
+import { Snackbar } from "@mui/material";
+import { DownloadCsvMenu } from "./components/DownloadCsvMenu";
 
 
 export default function Home() {
   const [ representative, setRepresentative ] = useState<Representative | null>(null);
   const [ constituents, setConstituents ] = useState<Constituent[] | null>(null);
+  const [ showSnackbar, setShowSnackbar ] = useState<boolean>(false);
+  const [ snackbarMessage, setSnackbarMessage ] = useState<string>('');
 
   // would pull this from auth login/app state info in a real app
   const representativeId = 3;
@@ -38,8 +41,24 @@ export default function Home() {
       })
   }, []);
 
-  const handleCSVDownload = () => {
-    console.log('Download CSV');
+  const handleCSVDownload = (sortBy: CSVSortBy) => {
+    fetch(`http://localhost:4000/downloadCSV?representativeId=${representativeId}&sortBy=${sortBy}`)
+      .then(res => res.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'constituents.csv');
+        document.body.appendChild(link);
+        link.click();
+        setShowSnackbar(true);
+        setSnackbarMessage('CSV downloaded successfully');
+      })
+      .catch((e) => {
+        console.error(e);
+        setShowSnackbar(true);
+        setSnackbarMessage('Error downloading CSV');
+      })
   }
 
   const welcomeMessage = representative ? `Welcome back, ${representative.role} ${representative.name}!` : '';
@@ -51,15 +70,17 @@ export default function Home() {
         <p>View and manage your constituents here!</p>
       </header>
       <div className={styles.buttonContainer}>
-        <Button 
-          variant="outlined" 
-          color="primary"
-          onClick={handleCSVDownload}
-        >
-          Download CSV
-        </Button>
+        <DownloadCsvMenu
+          handleDownloadSelection={handleCSVDownload}
+        />
       </div>
       <ConstituentTable constituents={constituents || []} />
+      <Snackbar
+        open={showSnackbar}
+        autoHideDuration={6000}
+        onClose={() => setShowSnackbar(false)}
+        message={snackbarMessage}
+      />
     </div>
   );
 }
