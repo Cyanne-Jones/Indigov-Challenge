@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@mui/material";
-import { theme } from '../theme/theme';
+import { theme } from '../utils/theme';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { NavBar } from "./components/NavBar";
+import { NavBar } from "./components/navBar/NavBar";
 
 export const metadata: Metadata = {
   title: "Representative Portal",

@@ -5,7 +5,6 @@ import { Constituent } from "../data/typeDefs";
 export const getAllConstituents = (representativeId: string) => {
   try {
     if (representativeId) {
-      console.log('Getting constituents for representative ID:', representativeId);
       const repConstituents = constituents.filter((constituent: Constituent ) => constituent.representative_id === parseInt(representativeId));
       return repConstituents;
     }
@@ -22,7 +21,6 @@ export const createConstituent = (constituent: Constituent) => {
     const existingConstituent = constituents.find((c: Constituent) => c.email === constituent.email);
 
     if(existingConstituent) {
-      console.log('Constituent already exists');
       // update the existing constituent
       const index = constituents.findIndex((c: Constituent) => c.email === constituent.email);
       const updatedConstituent = {
@@ -31,7 +29,6 @@ export const createConstituent = (constituent: Constituent) => {
         error: 'Constituent already exists'
       };
       constituents[index] = updatedConstituent;
-      console.log('Constituent updated', updatedConstituent);
       return updatedConstituent;
     }
 
@@ -43,7 +40,6 @@ export const createConstituent = (constituent: Constituent) => {
     };
 
     constituents.push(newConstituent);
-    console.log('Constituent added', newConstituent);
     return newConstituent;
   } catch (error) {
     console.error(error);

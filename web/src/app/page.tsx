@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
-import { Representative, Constituent, CSVSortBy } from "../typeDefs/typeDef";
+import { Representative, Constituent, CSVSortBy } from "../utils/typeDefs";
 import { ConstituentTable } from "./components/table/ConstituentTable";
 import { Snackbar } from "@mui/material";
 import { DownloadCsvMenu } from "./components/DownloadCsvMenu";
@@ -14,11 +14,10 @@ export default function Home() {
   const [ showSnackbar, setShowSnackbar ] = useState<boolean>(false);
   const [ snackbarMessage, setSnackbarMessage ] = useState<string>('');
 
-  // would pull this from auth login/app state info in a real app
+  // use 1, 2, 3 to toggle between different representatives!
   const representativeId = 3;
 
   useEffect(() => {
-    // fetch the representative from the backend
     fetch(`http://localhost:4000/representative?id=${representativeId}`)
       .then(res => res.json())
       .then((data) => {
@@ -26,11 +25,12 @@ export default function Home() {
       })
       .catch((e) => {
         console.error(e);
+        setShowSnackbar(true);
+        setSnackbarMessage('Error fetching representative information');
       })
   }, []);
 
   useEffect(() => {
-    // fetch the constituents from the backend
     fetch(`http://localhost:4000/constituents?representativeId=${representativeId}`)
       .then(res => res.json())
       .then((data) => {
@@ -38,6 +38,8 @@ export default function Home() {
       })
       .catch((e) => {
         console.error(e);
+        setShowSnackbar(true);
+        setSnackbarMessage('Error fetching constituent information');
       })
   }, []);
 

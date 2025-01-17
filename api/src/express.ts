@@ -21,7 +21,7 @@ app.get('/representative', (req, res) => {
 });
 
 app.get('/constituents', (req, res) => {
-  const representativeId = req?.query?.id;
+  const representativeId = req?.query?.representativeId;
   const constituents = getAllConstituents(representativeId);
   return res.send(constituents);
 });

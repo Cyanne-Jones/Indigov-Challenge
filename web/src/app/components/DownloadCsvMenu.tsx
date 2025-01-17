@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Menu, MenuItem, Button } from '@mui/material';
-import { CSVSortBy } from '../../typeDefs/typeDef';
+import { CSVSortBy } from '../../utils/typeDefs';
 import { ArrowUpwardOutlined, ArrowDownwardOutlined } from '@mui/icons-material';
 
 export const DownloadCsvMenu = ({ handleDownloadSelection } : { handleDownloadSelection: (csvSort: CSVSortBy) => void } ) => {

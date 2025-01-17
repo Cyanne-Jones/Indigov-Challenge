@@ -2,7 +2,7 @@
 
 import { TextField, Button, MenuItem, Snackbar } from "@mui/material";
 import { useState } from "react";
-import { Constituent, Party } from "@/typeDefs/typeDef";
+import { Constituent, Party } from "@/utils/typeDefs";
 import styles from './AddConstituentForm.module.css';
 
 export const AddConstituentForm = () => {

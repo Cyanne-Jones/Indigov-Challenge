@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableRow, TablePagination } from '@mui/material';
-import { Constituent, TableSortBy } from '../../../typeDefs/typeDef';
+import { Constituent, TableSortBy } from '../../../utils/typeDefs';
 import styled from '@emotion/styled';
-import { getSortedConstituentsForTable } from '../../utils';
+import { getSortedConstituentsForTable } from '../../../utils/utils';
 import { TableHeader } from './TableHeader';
 
 // Table pagination select component throws warning about using the native select element
