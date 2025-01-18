@@ -34,7 +34,7 @@ app.post('/addConstituent', (req, res) => {
 
 app.get('/downloadCSV', (req, res) =>  {
   const sortBy = req?.query?.sortBy;
-  const representativeId = req?.query?.id;
+  const representativeId = req?.query?.representativeId;
 
   const csv = downloadCSV(representativeId, sortBy)
   res.header('Content-Type', 'text/csv');
